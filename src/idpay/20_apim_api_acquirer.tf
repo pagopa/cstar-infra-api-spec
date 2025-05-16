@@ -1,13 +1,13 @@
 #
 # IDPAY PRODUCTS
 #
-module "idpay_api_acquirer_product" {
+module "idpay_itn_api_acquirer_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_acquirer_product"
-  display_name = "IDPAY_ACQUIRER_PRODUCT"
-  description  = "IDPAY_ACQUIRER_PRODUCT"
+  product_id   = "idpay_itn_api_acquirer_product"
+  display_name = "IDPAY_ITN_ACQUIRER_PRODUCT"
+  description  = "IDPAY_ITN_ACQUIRER_PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -29,16 +29,16 @@ module "idpay_api_acquirer_product" {
 #
 
 ## IDPAY QR-Code payment ACQUIRER API ##
-module "idpay_qr_code_payment_acquirer" {
+module "idpay_itn_qr_code_payment_acquirer" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-qr-code-payment-acquirer"
+  name                = "${var.env_short}-idpay-itn-qr-code-payment-acquirer"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY QR-CODE PAYMENT ACQUIRER"
-  display_name = "IDPAY QR-CODE PAYMENT ACQUIRER API"
-  path         = "idpay/payment/qr-code/merchant"
+  description  = "IDPAY ITN QR-CODE PAYMENT ACQUIRER"
+  display_name = "IDPAY ITN QR-CODE PAYMENT ACQUIRER API"
+  path         = "idpay-itn/payment/qr-code/merchant"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpaypayment/idpay/payment/qr-code/merchant"
@@ -48,6 +48,6 @@ module "idpay_qr_code_payment_acquirer" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids = [module.idpay_api_acquirer_product.product_id]
+  product_ids = [module.idpay_itn_api_acquirer_product.product_id]
 
 }

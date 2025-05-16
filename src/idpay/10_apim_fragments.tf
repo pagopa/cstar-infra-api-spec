@@ -1,5 +1,5 @@
 resource "azurerm_api_management_policy_fragment" "apim_merchant_id_retriever" {
-  name              = "idpay-merchant-id-retriever"
+  name              = "idpay-itn-merchant-id-retriever"
   api_management_id = data.azurerm_api_management.apim_core.id
 
   description = "idpay-merchant-id-retriever"
@@ -10,7 +10,7 @@ resource "azurerm_api_management_policy_fragment" "apim_merchant_id_retriever" {
 }
 
 resource "azurerm_api_management_policy_fragment" "apim_pdv_tokenizer" {
-  name              = "idpay-pdv-tokenizer"
+  name              = "idpay--itn-pdv-tokenizer"
   api_management_id = data.azurerm_api_management.apim_core.id
 
   description = "idpay-pdv-tokenizer"
@@ -26,10 +26,10 @@ resource "azurerm_api_management_policy_fragment" "apim_pdv_tokenizer" {
 }
 
 resource "azurerm_api_management_policy_fragment" "apim_validate_token_mil" {
-  name              = "idpay-validate-token-mil"
+  name              = "idpay-itn-validate-token-mil"
   api_management_id = data.azurerm_api_management.apim_core.id
 
-  description = "idpay-validate-token-mil"
+  description = "idpay-itn-validate-token-mil"
   format      = "rawxml"
   value = templatefile("./apim/api_fragment/validate-token-mil.xml", {
     openid-config-url-mil = var.openid_config_url_mil
@@ -37,10 +37,10 @@ resource "azurerm_api_management_policy_fragment" "apim_validate_token_mil" {
 }
 
 resource "azurerm_api_management_policy_fragment" "apim_webview_validate_token_mil" {
-  name              = "idpay-webview-validate-token-mil"
+  name              = "idpay-itn-webview-validate-token-mil"
   api_management_id = data.azurerm_api_management.apim_core.id
 
-  description = "idpay-webview-validate-token-mil"
+  description = "idpay-itn-webview-validate-token-mil"
   format      = "rawxml"
   value = templatefile("./apim/api_fragment/webview-validate-token-mil.xml", {
     openidUrl = var.mil_openid_url,

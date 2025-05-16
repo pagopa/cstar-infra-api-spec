@@ -1,32 +1,32 @@
 locals {
-  idpay_apim_api_diagnostics = [
-    module.idpay_onboarding_workflow_issuer.name,
-    module.idpay_wallet_issuer.name,
-    module.idpay_timeline_issuer.name,
-    module.idpay_onboarding_workflow_io.name,
-    module.idpay_wallet_io.name,
-    module.idpay_timeline_io.name,
-    module.idpay_iban_io.name,
-    module.idpay_initiative_portal.name,
-    module.idpay_group_portal.name,
-    module.idpay_permission_portal.name,
-    module.idpay_merchant_portal.name,
-    # module.idpay_notification_email_api.name,
-    module.idpay_merchants_permission_portal.name,
-    # module.idpay_merchants_notification_email_api.name,
-    # module.idpay_merchants_portal.name,
-    module.idpay_qr_code_payment_acquirer.name,
-    module.idpay_qr_code_payment_io.name,
-    module.idpay_payment_io.name,
-    module.idpay_mil_payment.name,
-    module.idpay_mil_merchant.name,
-    module.idpay_mil_onboarding.name,
-    module.idpay_min_int.name
+  idpay_itn_apim_api_diagnostics = [
+    module.idpay_itn_onboarding_workflow_issuer.name,
+    module.idpay_itn_wallet_issuer.name,
+    module.idpay_itn_timeline_issuer.name,
+    module.idpay_itn_onboarding_workflow_io.name,
+    module.idpay_itn_wallet_io.name,
+    module.idpay_itn_timeline_io.name,
+    module.idpay_itn_iban_io.name,
+    module.idpay_itn_initiative_portal.name,
+    module.idpay_itn_group_portal.name,
+    module.idpay_itn_permission_portal.name,
+    module.idpay_itn_merchant_portal.name,
+    module.idpay_itn_notification_email_api.name,
+    module.idpay_itn_merchants_permission_portal.name,
+    #module.idpay_itn_merchants_notification_email_api.name,
+    module.idpay_itn_merchants_portal.name,
+    module.idpay_itn_qr_code_payment_acquirer.name,
+    module.idpay_itn_qr_code_payment_io.name,
+    module.idpay_itn_payment_io.name,
+    module.idpay_itn_mil_payment.name,
+    module.idpay_itn_mil_merchant.name,
+    module.idpay_itn_mil_onboarding.name,
+    module.idpay_itn_min_int.name
   ]
 }
 
-resource "azurerm_api_management_api_diagnostic" "idpay_apim_api_diagnostics" {
-  for_each = toset(local.idpay_apim_api_diagnostics)
+resource "azurerm_api_management_api_diagnostic" "idpay_itn_apim_api_diagnostics" {
+  for_each = toset(local.idpay_itn_apim_api_diagnostics)
 
   identifier               = "applicationinsights"
   resource_group_name      = data.azurerm_resource_group.apim_rg.name
@@ -43,3 +43,4 @@ resource "azurerm_api_management_api_diagnostic" "idpay_apim_api_diagnostics" {
     ]
   }
 }
+

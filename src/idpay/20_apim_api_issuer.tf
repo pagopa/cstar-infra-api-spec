@@ -1,13 +1,13 @@
 #
 # IDPAY PRODUCTS
 #
-module "idpay_api_issuer_product" {
+module "idpay_itn_api_issuer_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_issuer_product"
-  display_name = "IDPAY_APP_ISSUER_PRODUCT"
-  description  = "IDPAY_APP_ISSUER_PRODUCT"
+  product_id   = "idpay_itn_api_issuer_product"
+  display_name = "IDPAY_ITN_APP_ISSUER_PRODUCT"
+  description  = "IDPAY_ITN_APP_ISSUER_PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -36,16 +36,16 @@ module "idpay_api_issuer_product" {
 #
 
 ## IDPAY Onboarding workflow ISSUER API ##
-module "idpay_onboarding_workflow_issuer" {
+module "idpay_itn_onboarding_workflow_issuer" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-issuer-onboarding-workflow"
+  name                = "${var.env_short}-idpay-itn-issuer-onboarding-workflow"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY Onboarding Workflow Issuer"
-  display_name = "IDPAY Onboarding Workflow Issuer API"
-  path         = "idpay/hb/onboarding"
+  description  = "IDPAY ITN Onboarding Workflow Issuer"
+  display_name = "IDPAY ITN Onboarding Workflow Issuer API"
+  path         = "idpay-itn/hb/onboarding"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpayonboardingworkflow/idpay/onboarding"
@@ -55,7 +55,7 @@ module "idpay_onboarding_workflow_issuer" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids = [module.idpay_api_issuer_product.product_id]
+  product_ids = [module.idpay_itn_api_issuer_product.product_id]
 
   api_operation_policies = [
     {
@@ -87,16 +87,16 @@ module "idpay_onboarding_workflow_issuer" {
 }
 
 ## IDPAY Wallet IO API ##
-module "idpay_wallet_issuer" {
+module "idpay_itn_wallet_issuer" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-issuer-wallet"
+  name                = "${var.env_short}-idpay-itn-issuer-wallet"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY Wallet Issuer"
-  display_name = "IDPAY Wallet Issuer API"
-  path         = "idpay/hb/wallet"
+  description  = "IDPAY ITN Wallet Issuer"
+  display_name = "IDPAY ITN Wallet Issuer API"
+  path         = "idpay-itn/hb/wallet"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpaywallet/idpay/wallet"
@@ -106,7 +106,7 @@ module "idpay_wallet_issuer" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids = [module.idpay_api_issuer_product.product_id]
+  product_ids = [module.idpay_itn_api_issuer_product.product_id]
 
   api_operation_policies = [
     {
@@ -146,16 +146,16 @@ module "idpay_wallet_issuer" {
 }
 
 ## IDPAY Timeline IO API ##
-module "idpay_timeline_issuer" {
+module "idpay_itn_timeline_issuer" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-issuer-timeline"
+  name                = "${var.env_short}-idpay-itn-issuer-timeline"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY Timeline Issuer"
-  display_name = "IDPAY Timeline Issuer API"
-  path         = "idpay/hb/timeline"
+  description  = "IDPAY ITN Timeline Issuer"
+  display_name = "IDPAY ITN Timeline Issuer API"
+  path         = "idpay-itn/hb/timeline"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpaytimeline/idpay/timeline"
@@ -165,7 +165,7 @@ module "idpay_timeline_issuer" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids = [module.idpay_api_issuer_product.product_id]
+  product_ids = [module.idpay_itn_api_issuer_product.product_id]
 
   api_operation_policies = [
     {
@@ -179,7 +179,7 @@ module "idpay_timeline_issuer" {
 
 /*
 ## IDPAY IBAN Wallet IO API ##
-module "idpay_iban_io" {
+module "idpay_itn_iban_io" {
   source = "git::https://github.com/pagopa/azurerm.git//api_management_api?ref=v2.18.2"
 
   name                = "${var.env_short}-idpay-iban"
@@ -188,7 +188,7 @@ module "idpay_iban_io" {
 
   description  = "IDPAY IBAN IO"
   display_name = "IDPAY IBAN IO API"
-  path         = "idpay/iban"
+  path         = "idpay-itn/iban"
   protocols    = ["https"]
 
   service_url = "${local.ingress_load_balancer_https}/idpayiban/idpay/iban"

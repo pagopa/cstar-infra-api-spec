@@ -56,7 +56,7 @@ aks_legacy_instance_name = "dev01"
 #
 appio_timeout_sec     = 5
 rate_limit_io_product = 2500
-webViewUrl            = "https://api-io.dev.cstar.pagopa.it/idpay/self-expense/login"
+webViewUrl            = "https://api-io.dev.cstar.pagopa.it/idpay-itn/self-expense/login"
 
 #
 # RTD

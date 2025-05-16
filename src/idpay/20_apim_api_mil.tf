@@ -2,13 +2,13 @@
 # IDPAY PRODUCTS
 #
 
-module "idpay_api_mil_merchant_product" {
+module "idpay_itn_api_mil_merchant_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_mil_merchant_product"
-  display_name = "IDPAY_APP_MIL_MERCHANT_PRODUCT"
-  description  = "IDPAY_APP_MIL_MERCHANT_PRODUCT"
+  product_id   = "idpay_itn_api_mil_merchant_product"
+  display_name = "IDPAY_ITN_APP_MIL_MERCHANT_PRODUCT"
+  description  = "IDPAY_ITN_APP_MIL_MERCHANT_PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -27,13 +27,13 @@ module "idpay_api_mil_merchant_product" {
   groups = ["developers"]
 }
 
-module "idpay_api_mil_citizen_product" {
+module "idpay_itn_api_mil_citizen_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_mil_citizen_product"
-  display_name = "IDPAY_APP_MIL_CITIZEN_PRODUCT"
-  description  = "IDPAY_APP_MIL_CITIZEN_PRODUCT"
+  product_id   = "idpay_itn_api_mil_citizen_product"
+  display_name = "IDPAY_ITN_APP_MIL_CITIZEN_PRODUCT"
+  description  = "IDPAY_ITN_APP_MIL_CITIZEN_PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -53,16 +53,16 @@ module "idpay_api_mil_citizen_product" {
 }
 
 ## IDPAY MIL PAYMENT API ##
-module "idpay_mil_payment" {
+module "idpay_itn_mil_payment" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-mil-payment"
+  name                = "${var.env_short}-idpay-itn-mil-payment"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY MIL PAYMENT"
-  display_name = "IDPAY MIL PAYMENT API"
-  path         = "idpay/mil/payment"
+  description  = "IDPAY ITN MIL PAYMENT"
+  display_name = "IDPAY ITN MIL PAYMENT API"
+  path         = "idpay-itn/mil/payment"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpaypayment/idpay/mil/payment"
@@ -72,7 +72,7 @@ module "idpay_mil_payment" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids           = [module.idpay_api_mil_merchant_product.product_id]
+  product_ids           = [module.idpay_itn_api_mil_merchant_product.product_id]
   subscription_required = true
 
   api_operation_policies = [
@@ -110,16 +110,16 @@ module "idpay_mil_payment" {
 }
 
 ## IDPAY MIL API ##
-module "idpay_mil_merchant" {
+module "idpay_itn_mil_merchant" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-mil-merchant"
+  name                = "${var.env_short}-idpay-itn-mil-merchant"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY MIL MERCHANT"
-  display_name = "IDPAY MIL MERCHANT API"
-  path         = "idpay/mil/merchant"
+  description  = "IDPAY ITN MIL MERCHANT"
+  display_name = "IDPAY ITN MIL MERCHANT API"
+  path         = "idpay-itn/mil/merchant"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpaypayment/idpay/merchant"
@@ -129,7 +129,7 @@ module "idpay_mil_merchant" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids           = [module.idpay_api_mil_merchant_product.product_id]
+  product_ids           = [module.idpay_itn_api_mil_merchant_product.product_id]
   subscription_required = true
 
   api_operation_policies = [
@@ -153,16 +153,16 @@ module "idpay_mil_merchant" {
 
 
 ## IDPAY MIL ONBOARDING API ##
-module "idpay_mil_onboarding" {
+module "idpay_itn_mil_onboarding" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-mil-onboarding"
+  name                = "${var.env_short}-idpay-itn-mil-onboarding"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY MIL ONBOARDING"
-  display_name = "IDPAY MIL ONBOARDING API"
-  path         = "idpay/mil/onboarding"
+  description  = "IDPAY ITN MIL ONBOARDING"
+  display_name = "IDPAY ITN MIL ONBOARDING API"
+  path         = "idpay-itn/mil/onboarding"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpayonboardingworkflow/idpay/onboarding"
@@ -172,7 +172,7 @@ module "idpay_mil_onboarding" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids           = [module.idpay_api_mil_citizen_product.product_id]
+  product_ids           = [module.idpay_itn_api_mil_merchant_product.product_id]
   subscription_required = true
 
   api_operation_policies = [
@@ -218,16 +218,16 @@ module "idpay_mil_onboarding" {
 
 
 ## IDPAY MIL WALLET API ##
-module "idpay_mil_wallet" {
+module "idpay_itn_mil_wallet" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-mil-wallet"
+  name                = "${var.env_short}-idpay-itn-mil-wallet"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY MIL WALLET"
-  display_name = "IDPAY MIL WALLET API"
-  path         = "idpay/mil/wallet"
+  description  = "IDPAY ITN MIL WALLET"
+  display_name = "IDPAY ITN MIL WALLET API"
+  path         = "idpay-itn/mil/wallet"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpaywallet/idpay/wallet"
@@ -237,7 +237,7 @@ module "idpay_mil_wallet" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids           = [module.idpay_api_mil_citizen_product.product_id]
+  product_ids           = [module.idpay_itn_api_mil_merchant_product.product_id]
   subscription_required = true
 
   api_operation_policies = [

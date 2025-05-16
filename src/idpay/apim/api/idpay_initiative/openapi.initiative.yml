@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY Welfare Portal Initiative API
-  description: IDPAY Welfare Portal Initiative
+  title: IDPAY ITN Welfare Portal Initiative API
+  description: IDPAY ITN Welfare Portal Initiative
   version: '1.0'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/initiative
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/initiative
 paths:
   '/{initiativeId}/beneficiary/view':
     get:

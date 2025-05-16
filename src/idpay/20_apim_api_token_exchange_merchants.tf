@@ -1,19 +1,19 @@
 
 resource "azurerm_api_management_certificate" "idpay_merchants_token_exchange_cert_jwt" {
-  name                = "${local.project}-${var.domain}-merchants-token-exchange-jwt"
+  name                = "${local.project}-merchants-token-exchange-jwt"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
   key_vault_secret_id = data.azurerm_key_vault_certificate.idpay_merchants_jwt_signing_cert.versionless_secret_id
 }
 
 resource "azurerm_api_management_api" "idpay_merchants_token_exchange" {
-  name                = "${var.env_short}-idpay-token-exchange-merchants"
+  name                = "${var.env_short}-idpay-itn-token-exchange-merchants"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
   revision              = "1"
-  display_name          = "IDPAY Token Exchange for Merchants Portal"
-  path                  = "idpay/merchant/token"
+  display_name          = "IDPAY ITN Token Exchange for Merchants Portal"
+  path                  = "idpay-itn/merchant/token"
   subscription_required = false
   #service_url           = ""
   protocols = ["https"]

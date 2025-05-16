@@ -3,19 +3,19 @@ info:
   title: IDPAY IO API
   version: '1.0'
   description: |-
-    IDPAY IBAN IO
+    IDPAY ITN IBAN IO
 
-    IDPAY Onboarding Workflow IO
+    IDPAY ITN Onboarding Workflow IO
 
-    IDPAY Timeline IO
+    IDPAY ITN Timeline IO
 
-    IDPAY Wallet IO
+    IDPAY ITN Wallet IO
 
-    IDPAY Payment QRCODE IO
+    IDPAY ITN Payment QRCODE IO
 
-    IDPAY Payment IO
+    IDPAY ITN Payment IO
 servers:
-  - url: 'https://api-io.dev.cstar.pagopa.it/idpay'
+  - url: 'https://api-io.dev.cstar.pagopa.it/idpay-itn'
 security:
   - bearerAuth: []
 tags:

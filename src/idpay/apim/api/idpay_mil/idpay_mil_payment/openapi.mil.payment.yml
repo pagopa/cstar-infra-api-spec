@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY MIL PAYMENT API
-  description: IDPAY MIL PAYMENT API
+  title: IDPAY ITN MIL PAYMENT API
+  description: IDPAY ITN MIL PAYMENT API
   version: '1.0.1'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/mil/payment
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/mil/payment
 paths:
   /:
     post:

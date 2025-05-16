@@ -9,7 +9,7 @@
 #
 #   description  = "IDPAY Mock citizen data"
 #   display_name = "IDPAY Mock citizen data API"
-#   path         = "idpay/mock/citizen"
+#   path         = "idpay-itn/mock/citizen"
 #   protocols    = ["https"]
 #
 #   service_url = "http://${local.domain_aks_ingress_hostname}/idpayadmissibility/idpay/mock/citizen"

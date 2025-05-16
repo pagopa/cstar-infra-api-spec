@@ -1,7 +1,7 @@
 locals {
-  product = "${var.prefix}-${var.env_short}"
-  project = "${var.prefix}-${var.env_short}-${var.location_short}-${var.domain}"
-
+  product    = "${var.prefix}-${var.env_short}"
+  project    = "${var.prefix}-${var.env_short}-${var.location_short}-${var.domain}"
+  prefix_api = "idpay-itn"
   #
   # Network
   #
@@ -56,8 +56,8 @@ locals {
   #
   # Selfcare
   #
-  idpay-portal-hostname = "welfare.${data.azurerm_dns_zone.public.name}"
-  idpay-oidc-config_url = "https://${local.idpay-portal-hostname}/selfcare/openid-configuration.json"
+  idpay-portal-hostname = "welfare-italy.${data.azurerm_dns_zone.public.name}"
+  idpay-oidc-config_url = "https://welfare.${data.azurerm_dns_zone.public.name}/selfcare/openid-configuration.json"
   selfcare-issuer       = "https://${var.env != "prod" ? "${var.env}." : ""}selfcare.pagopa.it"
 
   # monitor_appinsights_name        = "${local.product}-appinsights"

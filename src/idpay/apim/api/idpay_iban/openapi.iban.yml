@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY Iban IO API
-  description: IDPAY IBAN IO
+  title: IDPAY ITN Iban IO API
+  description: IDPAY ITN IBAN IO
   version: '1.0'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/iban
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/iban
 paths:
   '/{iban}':
     get:

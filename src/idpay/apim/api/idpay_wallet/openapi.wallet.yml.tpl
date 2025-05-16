@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY Wallet IO API v2
-  description: IDPAY Wallet IO
+  title: IDPAY ITN Wallet IO API v2
+  description: IDPAY ITN Wallet IO
   version: '2.0'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/wallet
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/wallet
 paths:
   /:
     get:

@@ -6,9 +6,9 @@ module "idpay_api_mock_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_mock_product"
-  display_name = "IDPAY_MOCK_PRODUCT"
-  description  = "IDPAY_MOCK_PRODUCT"
+  product_id   = "idpay_itn_api_mock_product"
+  display_name = "IDPAY_ITN_MOCK_PRODUCT"
+  description  = "IDPAY_ITN_MOCK_PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -23,14 +23,14 @@ module "idpay_api_mock_product" {
 
 ## IDPAY Mock API ##
 resource "azurerm_api_management_api" "idpay_mock_api" {
-  name                = "${var.env_short}-idpay-mock-api"
+  name                = "${var.env_short}-idpay-int-mock-api"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
   revision              = "1"
-  description           = "IDPAY MOCK API"
-  display_name          = "IDPAY MOCK API"
-  path                  = "idpay/mock"
+  description           = "IDPAY ITN MOCK API"
+  display_name          = "IDPAY ITN MOCK API"
+  path                  = "idpay-itn/mock"
   protocols             = ["https"]
   subscription_required = false
 

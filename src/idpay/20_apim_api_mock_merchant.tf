@@ -12,7 +12,7 @@ resource "azurerm_api_management_subscription" "idpay_apim_subscription_mocked_a
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
   user_id             = data.azurerm_api_management_user.idpay_apim_user_mocked_acquirer[0].id
-  product_id          = module.idpay_api_acquirer_product.id
+  product_id          = module.idpay_itn_api_acquirer_product.id
   display_name        = "Mocked Acquirer"
   allow_tracing       = false
   state               = "active"
@@ -21,10 +21,10 @@ resource "azurerm_api_management_subscription" "idpay_apim_subscription_mocked_a
 resource "azurerm_api_management_named_value" "idpay_apim_subscription_mocked_acquirer_key" {
   count = var.enable_flags.mocked_merchant ? 1 : 0
 
-  name                = "mocked-acquirer-subscription-key"
+  name                = "itn-mocked-acquirer-subscription-key"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
-  display_name        = "MockedAcquirerSubscriptionKey"
+  display_name        = "ItnMockedAcquirerSubscriptionKey"
   value               = azurerm_api_management_subscription.idpay_apim_subscription_mocked_acquirer[0].primary_key
   secret              = true
 }
@@ -40,9 +40,9 @@ module "idpay_api_merchant_mock_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_merchant_mock_product"
-  display_name = "IDPAY_MERCHANT_MOCK_PRODUCT"
-  description  = "IDPAY_MERCHANT_MOCK_PRODUCT"
+  product_id   = "idpay_itn_api_merchant_mock_product"
+  display_name = "IDPAY_ITN_MERCHANT_MOCK_PRODUCT"
+  description  = "IDPAY_ITN_MERCHANT_MOCK_PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -69,13 +69,13 @@ module "idpay_qr_code_payment_mock_merchant" {
 
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-qr-code-payment-mock-merchant"
+  name                = "${var.env_short}-idpay-itn-qr-code-payment-mock-merchant"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY QR-CODE PAYMENT MOCK MERCHANT"
-  display_name = "IDPAY QR-CODE PAYMENT MOCK MERCHANT API"
-  path         = "idpay/payment/qr-code/mock/merchant"
+  description  = "IDPAY ITN QR-CODE PAYMENT MOCK MERCHANT"
+  display_name = "IDPAY ITN QR-CODE PAYMENT MOCK MERCHANT API"
+  path         = "idpay-itn/payment/qr-code/mock/merchant"
   protocols    = ["https"]
 
   service_url = "https://api-io.${data.azurerm_dns_zone.public.name}/idpay/payment/qr-code/merchant"

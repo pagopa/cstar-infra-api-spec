@@ -6,9 +6,9 @@ module "idpay_api_webview_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_webview_product"
-  display_name = "IDPAY_API_WEBVIEW PRODUCT"
-  description  = "IDPAY_API_WEBVIEW PRODUCT"
+  product_id   = "idpay_itn_api_webview_product"
+  display_name = "IDPAY_ITN_API_WEBVIEW PRODUCT"
+  description  = "IDPAY_ITN_API_WEBVIEW PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -39,13 +39,13 @@ module "idpay_api_webview_product" {
 module "idpay_api_webview" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-self-expense-backend"
+  name                = "${var.env_short}-idpay-itn-self-expense-backend"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY Webview"
-  display_name = "IDPAY Webview"
-  path         = "idpay/self-expense"
+  description  = "IDPAY ITN Webview"
+  display_name = "IDPAY ITN Webview"
+  path         = "idpay-itn/self-expense"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpayselfexpensebackend/idpay/self-expense"

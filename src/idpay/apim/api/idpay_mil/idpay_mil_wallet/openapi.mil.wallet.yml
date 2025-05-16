@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY MIL WALLET API
-  description: IDPAY MIL WALLET
+  title: IDPAY ITN MIL WALLET API
+  description: IDPAY ITN MIL WALLET
   version: '1.0.1'
 servers:
-  - url: 'https://api-io.dev.cstar.pagopa.it/idpay/mil/wallet'
+  - url: 'https://api-io.dev.cstar.pagopa.it/idpay-itn/mil/wallet'
 security:
   - bearerAuth: []
 paths:

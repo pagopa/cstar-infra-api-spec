@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY Timeline IO API v2
-  description: IDPAY Timeline IO
+  title: IDPAY ITN Timeline IO API v2
+  description: IDPAY ITN Timeline IO
   version: '2.0'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/timeline
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/timeline
 paths:
   '/{initiativeId}':
     get:

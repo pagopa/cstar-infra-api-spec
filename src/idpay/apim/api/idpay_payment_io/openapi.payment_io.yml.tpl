@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY Payment IO
-  description: IDPAY Payment IO
+  title: IDPAY ITN Payment IO
+  description: IDPAY ITN Payment IO
   version: '1.0'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/payment
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/payment
 paths:
   /bar-code:
     post:

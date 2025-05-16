@@ -1,11 +1,11 @@
 openapi: 3.0.1
 info:
-  title: IDPAY Self Expense IO API v2
-  description: IDPAY Self Expense IO
+  title: IDPAY ITN Self Expense IO API v2
+  description: IDPAY ITN Self Expense IO
   version: '2.0'
 
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/self-expense
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/self-expense
 
 tags:
   - name: WebView

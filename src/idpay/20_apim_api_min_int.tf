@@ -2,13 +2,13 @@
 # IDPAY PRODUCTS
 #
 
-module "idpay_api_min_int_product" {
+module "idpay_itn_api_min_int_product" {
   source = "./.terraform/modules/__v4__/api_management_product"
 
 
-  product_id   = "idpay_api_min_int_product"
-  display_name = "IDPAY_MIN_INT_PRODUCT"
-  description  = "IDPAY_MIN_INT_PRODUCT"
+  product_id   = "idpay_itn_api_min_int_product"
+  display_name = "IDPAY_ITN_MIN_INT_PRODUCT"
+  description  = "IDPAY_ITN_MIN_INT_PRODUCT"
 
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
@@ -28,16 +28,16 @@ module "idpay_api_min_int_product" {
 }
 
 ## IDPAY MIN INT API ##
-module "idpay_min_int" {
+module "idpay_itn_min_int" {
   source = "./.terraform/modules/__v4__/api_management_api"
 
-  name                = "${var.env_short}-idpay-min-int"
+  name                = "${var.env_short}-idpay-itn-min-int"
   api_management_name = data.azurerm_api_management.apim_core.name
   resource_group_name = data.azurerm_resource_group.apim_rg.name
 
-  description  = "IDPAY MIN INT"
-  display_name = "IDPAY MIN INT API"
-  path         = "idpay/minint/payment"
+  description  = "IDPAY INT MIN INT"
+  display_name = "IDPAY INT MIN INT API"
+  path         = "idpay-itn/minint/payment"
   protocols    = ["https"]
 
   service_url = "${local.domain_aks_ingress_load_balancer_https}/idpaypayment/idpay/minint/payment"
@@ -47,7 +47,7 @@ module "idpay_min_int" {
 
   xml_content = file("./apim/api/base_policy.xml")
 
-  product_ids           = [module.idpay_api_min_int_product.product_id]
+  product_ids           = [module.idpay_itn_api_min_int_product.product_id]
   subscription_required = true
 
   api_operation_policies = [

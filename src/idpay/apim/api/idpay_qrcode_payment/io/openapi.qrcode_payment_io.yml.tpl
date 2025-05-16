@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY Payment QRCODE IO
-  description: IDPAY Payment QRCODE IO
+  title: IDPAY ITN Payment QRCODE IO
+  description: IDPAY ITN Payment QRCODE IO
   version: '1.0'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/payment/qr-code
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/payment/qr-code
 paths:
   /{trxCode}/relate-user:
     put:

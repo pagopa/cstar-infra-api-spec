@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: IDPAY MIN INT API
-  description: IDPAY MIN INT
+  title: IDPAY ITN MIN INT API
+  description: IDPAY ITN MIN INT
   version: '1.0.1'
 servers:
-  - url: https://api-io.dev.cstar.pagopa.it/idpay/minint/payment
+  - url: https://api-io.dev.cstar.pagopa.it/idpay-itn/minint/payment
 paths:
   '/{transactionId}/user':
     put:
